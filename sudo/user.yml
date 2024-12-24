@@ -1,0 +1,13 @@
+---
+-  name: remote + become
+   hosts: nodes
+   #remote_user: jonas
+   become: true
+
+
+
+   tasks:
+     - name: supprimer un user
+       user:
+         name: newuser
+         state: absent
