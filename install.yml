@@ -26,10 +26,10 @@
         mode: 0755
 
 
-     - name: phpinfo
-       copy:
-         src: files/index.php
-         dest: /var/www/{{ domain }}
-         owner: "{{ user }}"
-         group: "{{ user }}"
-         mode: 0644      
+    - name: phpinfo
+      copy:
+        src: files/index.php
+        dest: /var/www/{{ domain }}
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0644      
