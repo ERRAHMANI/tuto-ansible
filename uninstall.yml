@@ -1,0 +1,16 @@
+---
+- name: uninstall serveur web
+  hosts: serveurweb
+  remote_user: root
+
+
+  tasks:
+    - name: remove packages
+      apt:
+        state: absent
+        pkg:
+        - apache2
+        - php
+
+
+

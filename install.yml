@@ -1,0 +1,35 @@
+---
+- name: installation serveur web (documenter chauqe action)
+  hosts: serveurweb
+  remote_user: root
+
+
+  tasks:
+    - name: installation apache et php
+      apt:
+        pkg:
+           - apache2
+           - php
+      become: yes      
+    - name: ajout user
+      user:
+        name: "{{ user }}"
+        password: !
+        shell: /bin/false
+
+    - name: creer dossier user
+      file:
+        path: /var/www/{{ domain }}
+        state: directory
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0755
+
+
+     - name: phpinfo
+       copy:
+         src: files/index.php
+         dest: /var/www/{{ domain }}
+         owner: "{{ user }}"
+         group: "{{ user }}"
+         mode: 0644      
